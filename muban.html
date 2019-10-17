@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板方法模式</title>
+</head>
+<body>
+<script>
+    function Drinks(name) {
+      this.name = name
+    }
+
+    Drinks.prototype = {
+      init: function () {
+        this.firstStep()
+        this.secondStep()
+        this.thirdStep()
+        this.fourthStep()
+      },
+      firstStep: function () {
+        console.log('烧开水')
+      },
+      secondStep: function () {
+      },
+      thirdStep: function () {
+        console.log('倒入杯子')
+      },
+      fourthStep: function () {
+      },
+    }
+
+    function Tea(name) {
+      this.name = name
+    }
+
+    Tea.prototype = new Drinks()
+
+    Tea.prototype.secondStep = function () {
+      console.log('浸泡茶叶')
+    }
+    Tea.prototype.fourthStep = function () {
+      console.log('加柠檬')
+    }
+
+    const tea = new Tea().init()
+
+    function Coffee() {
+      this.name = name
+    }
+
+    Coffee.prototype = new Drinks()
+
+    Coffee.prototype.secondStep = function () {
+      console.log('冲泡咖啡')
+    }
+    Coffee.prototype.fourthStep = function () {
+      console.log('加糖')
+    }
+
+    const coffee = new Coffee().init()
+</script>
+</body>
+</html>
